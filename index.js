@@ -45,4 +45,32 @@ function initStatesDropdown(){
    }
 
 }
+
+function onClickEvent(){
+
+    const team = document.getElementById('FootballTeam');
+    let teamCode1 = team.value;
+    if(teamCode1==null){
+        alert("No team selected");
+        return;
+    }
+    else{
+
+      let team = findTeam(teamCode1);
+        let msgDiv = document.getElementById('message');
+        console.log(teamCode1);
+        msgDiv.innerHTML="You selected the"+team.name+"("+teamCode1+")"+"who plays for"+team.locatedIn;
+    }
+
+    function findTeam(arrayValue){
+      let length = teams.length;
+      for(let i = 0;i<length;i++){
+        if(teams[i].teamcode==arrayValue){
+          return teams[i];
+        }
+      }
+    }
+
+    
+}
   
