@@ -33,7 +33,12 @@ function initStatesDropdown(){
    const teamList = document.getElementById("FootballTeam");
 
    let length = names.length;
+
+   let newOption = new Option("Select a Team" , "");
+      teamList.appendChild(newOption);
    for (let i = 0; i < length; i++) {
+
+    
 
       // create the option element and set the text and
       // value at the same time
@@ -42,6 +47,8 @@ function initStatesDropdown(){
       // append the option as a child of (inside) the 
       // select element
       teamList.appendChild(theOption);
+
+      
    }
 
 }
@@ -50,16 +57,21 @@ function onClickEvent(){
 
     const team = document.getElementById('FootballTeam');
     let teamCode1 = team.value;
+    let msgDiv = document.getElementById('message');
     if(teamCode1==null){
         alert("No team selected");
         return;
     }
-    else{
+    else if(teamCode1!=null && teamCode1!=""){
 
       let team = findTeam(teamCode1);
-        let msgDiv = document.getElementById('message');
+        
         console.log(teamCode1);
         msgDiv.innerHTML="You selected the"+team.name+"("+teamCode1+")"+"who plays for"+team.locatedIn;
+    }
+    else{
+      console.log(teamCode1);
+      msgDiv.innerHTML="";
     }
 
     function findTeam(arrayValue){
